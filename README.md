@@ -25,8 +25,8 @@ archlinux-us 镜像的工作原理如下：
      * 第三步：参考 https://github.com/Jguer/yay#source 安装yay到系统中。
      * 第四步：签出仓库文件，用yay安装targets.txt中的每个软件，然后yay-cache-to-repo.sh制作软件仓库，最后sync-repo-to-remote.sh更新远端仓库。
    * targets.txt 每行都是一个软件名字的文件，这是更新目标。
-   * yay-cache-to-repo.sh 将yay缓存制作成软件仓库的工具，它会在主机工作目录的 archlinuxus/ 下生成完整的软件仓库。
-   * sync-repo-to-remote.sh 将archlinuxus/完整同步到远程主机的工具。
+   * prepare-archlinux.sh 负责下载镜像、解压、挂载、安装基本软件、安装yay、准备基本的构建环境
+   * build-repo.sh 负责构建整个仓库
 2. 远端仓库每次被GitHub脚本更至最新，同时仅保留最新的软件版本，不留旧包。
 
    远端仓库的结构如下：
@@ -36,4 +36,3 @@ archlinux-us 镜像的工作原理如下：
      * xxx-xxx-xxx.tar.zst
      * …
 3. 远端仓库工作失败，会报错，此时远端仓库不会继续更新当天的软件。任何一个错误都会导致流程彻底退出。
-4. archlinux主机需要安装此仓库中的软件时，需要指定仓库地址： https://arch-mirror.us.ygg/$arch 即可。
