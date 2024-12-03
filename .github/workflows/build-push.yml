@@ -22,7 +22,7 @@ jobs:
           path: archlinuxus-scripts
       - name: execute build script
         run: |
-          cd 
+          cd archlinuxus-scripts
           sudo -E ./main.sh
         env:
           REMOTE_ADDR: ${{ secrets.REMOTE_ADDR }}
