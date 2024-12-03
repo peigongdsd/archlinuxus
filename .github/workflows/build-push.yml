@@ -24,9 +24,14 @@ jobs:
         run: |
           cd archlinuxus-scripts
           sudo -E ./main.sh
-        env:
-          REMOTE_ADDR: ${{ secrets.REMOTE_ADDR }}
-          REMOTE_REPO: ${{ secrets.REMOTE_REPO }}
-          REMOTE_SSH_KEY: ${{ secrets.REMOTE_SSH_KEY }}
-          REMOTE_SSH_PORT: ${{ secrets.REMOTE_SSH_PORT }}
-          REMOTE_SSH_USER: ${{ secrets.REMOTE_SSH_USER }}
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.REMOTE_ADDR }}
+          username: ${{ secrets.REMOTE_SSH_USER }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          port: ${{ secrets.REMOTE_SSH_PORT }}
+          rm: true
+          source: "root.x86_64/home/archlinuxus/repo"
+          target: ${{ secrets.REMOTE_REPO }}
+          strip_components: 3
