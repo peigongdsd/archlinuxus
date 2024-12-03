@@ -11,7 +11,6 @@ function prepare-keys() {
 }
 
 function upgrade-and-rank-mirrors() {
-    pacman -Syu --noconfirm
     pacman -S pacman-contrib --noconfirm
     awk '/^## United States$/{f=1; next}f==0{next}/^$/{exit}{print substr($0, 1);}' /etc/pacman.d/mirrorlist.backup
     sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
@@ -19,7 +18,8 @@ function upgrade-and-rank-mirrors() {
 }
 
 prepare-basic-mirror
+pacman -Syu --noconfirm
 prepare-keys
-upgrade-and-rank-mirrors
-echo "ranked mirrors:"
-cat /etc/pacman.d/mirrorlist
+# upgrade-and-rank-mirrors
+# echo "ranked mirrors:"
+# cat /etc/pacman.d/mirrorlist
