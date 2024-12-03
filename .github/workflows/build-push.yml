@@ -21,9 +21,7 @@ jobs:
           fetch-depth: 0
           path: archlinuxus-scripts
       - name: prepare archlinux environment
-        run: |
-          cd archlinuxus-scripts
-          sudo ./prepare-archlinux.sh
+        run: sudo ./prepare-archlinux.sh
       - name: Restore cache for build
         id: cache-restore
         uses: actions/cache@v4
@@ -33,9 +31,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-root-cache-
       - name: build repo
-        run: |
-          cd archlinuxus-scripts
-          sudo ./build-repo.sh
+        run: sudo ./build-repo.sh
       - name: copy file via ssh key
         uses: appleboy/scp-action@v0.1.7
         with:
