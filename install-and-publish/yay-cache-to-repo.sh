@@ -21,3 +21,4 @@ function generate-db-file() {
 prepare-repo
 move-all-packages-to-repo
 generate-db-file
+cd "$PROJ_DIR"
