@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 USERNAME=archlinuxus
+HOME="/root" # fix the HOME variable to /root
 
 if [ "$EUID" -ne 0 ]; then
     echo "This script must be run as root."

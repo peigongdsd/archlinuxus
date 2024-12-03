@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 function yay-install-package() {
-    LANG=C yay --answerdiff None --answerclean None --mflags "--noconfirm" --noconfirm -S $1
+    LANG=C yay --answerdiff None --answerclean None --mflags "--noconfirm" --noconfirm -S "$1"
 }
 
 function install-all-packages() {
