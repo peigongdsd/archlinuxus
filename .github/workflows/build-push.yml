@@ -19,11 +19,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: rename code folder
-        run: mv archlinuxus archlinuxus-scripts
+          path: archlinuxus-scripts
       - name: execute build script
         run: |
-          cd archlinuxus-scripts
+          cd 
           sudo -E ./main.sh
         env:
           REMOTE_ADDR: ${{ secrets.REMOTE_ADDR }}
