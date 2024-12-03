@@ -1,0 +1,33 @@
+name: Build And Push Software Repository
+
+on:
+  push:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: archlinuxus
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: rename code folder
+        run: mv archlinuxus archlinuxus-scripts
+      - name: execute build script
+        run: |
+          cd archlinuxus-scripts
+          sudo -E ./main.sh
+        env:
+          REMOTE_ADDR: ${{ secrets.REMOTE_ADDR }}
+          REMOTE_REPO: ${{ secrets.REMOTE_REPO }}
+          REMOTE_SSH_KEY: ${{ secrets.REMOTE_SSH_KEY }}
+          REMOTE_SSH_PORT: ${{ secrets.REMOTE_SSH_PORT }}
+          REMOTE_SSH_USER: ${{ secrets.REMOTE_SSH_USER }}

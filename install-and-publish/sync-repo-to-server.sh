@@ -1,4 +1,4 @@
 #!/bin/bash -e
 
-echo "$GITHUB_REMOTE_SSH_KEY" > /home/$USERNAME/.ssh/id_ed25519
-rsync -avz -e "ssh -p $GITHUB_REMOTE_SSH_PORT" /home/$USERNAME/repo/ $GITHUB_REMOTE_SSH_USER@$GITHUB_REMOTE_ADDR:$GITHUB_REMOTE_REPO
+echo "$REMOTE_SSH_KEY" > "/home/$USERNAME/.ssh/id_ed25519"
+rsync -avz -e "ssh -p $REMOTE_SSH_PORT" "/home/$USERNAME/repo/ $REMOTE_SSH_USER@$REMOTE_ADDR:$REMOTE_REPO"

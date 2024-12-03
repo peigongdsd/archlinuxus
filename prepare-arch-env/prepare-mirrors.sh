@@ -21,3 +21,5 @@ function upgrade-and-rank-mirrors() {
 prepare-basic-mirror
 prepare-keys
 upgrade-and-rank-mirrors
+echo "ranked mirrors:"
+cat /etc/pacman.d/mirrorlist

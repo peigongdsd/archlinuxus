@@ -4,6 +4,7 @@ USERNAME=archlinuxus
 PROJ_DIR=/root/archlinuxus-scripts
 /root/secret_envs.sh
 
+cd "$PROJ_DIR"
 source prepare-arch-env/prepare-mirrors.sh
 source prepare-arch-env/prepare-software.sh
 source prepare-arch-env/prepare-user.sh

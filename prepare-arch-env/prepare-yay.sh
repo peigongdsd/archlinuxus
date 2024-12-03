@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
-su "$USERNAME"
 cd "/home/$USERNAME"
-git clone https://aur.archlinux.org/yay.git
+sudo -u "$USERNAME" git clone https://aur.archlinux.org/yay.git
 cd yay
-makepkg -si --noconfirm
+sudo -u "$USERNAME" makepkg -si --noconfirm
