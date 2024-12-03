@@ -1,4 +1,7 @@
 #!/bin/bash
 
 export USERNAME=archlinuxus
-sudo -u $USERNAME ./user-main.sh
+export PROJ_DIR="/home/$USERNAME/archlinuxus-scripts"
+cd "$PROJ_DIR"
+
+sudo -u $USERNAME install-and-publish/user-main.sh
