@@ -18,8 +18,8 @@ function upgrade-and-rank-mirrors() {
 }
 
 prepare-basic-mirror
-pacman -Syu --noconfirm
 prepare-keys
+pacman -Syu --noconfirm
 # upgrade-and-rank-mirrors
 # echo "ranked mirrors:"
 # cat /etc/pacman.d/mirrorlist
